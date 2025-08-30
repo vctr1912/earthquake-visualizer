@@ -6,7 +6,6 @@ import TopRightControls from './components/TopRightControls';
 
 const App = () => {
 
-  //to prevent website from zooming 
   useEffect(() => {
     // Prevent keyboard zoom (Ctrl + +/-)
     const preventZoom = (e: KeyboardEvent) => {
@@ -35,6 +34,8 @@ const App = () => {
       document.removeEventListener('gesturestart', preventGesture);
     };
   }, []);
+
+
 
   // ---- State Management ---- 
 
