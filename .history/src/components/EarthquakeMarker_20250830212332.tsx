@@ -3,9 +3,10 @@ import { useState } from "react";
 
 // ---- Props for the EarthquakeMarker component ----
 type EarthquakeMarkerProps = {
-  earthquake: Earthquake;
+  earthquake: Earthquake; // An individual earthquake object
 };
 
+// ---- Helper function ----
 // Determines the color of the marker based on earthquake magnitude
 const getColorByMagnitude = (magnitude: number) => {
   if (magnitude < 3) return "#00bf00"; // Green for minor earthquakes
