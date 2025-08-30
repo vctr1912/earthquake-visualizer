@@ -213,8 +213,6 @@ const TopRightControls = ({
         <div
           className="fixed inset-0 z-5"
           onClick={closeAllDropdowns} // Clicking anywhere outside closes all dropdowns
-                    style={{ transform: 'none' }}
-
         />
       )}
     </>

@@ -39,7 +39,7 @@ const TopRightControls = ({
   return (
     <>
       {/* Container for the top-right buttons */}
-      <div className="absolute top-4 right-4 2xl:top-8 2xl:right-8 z-20 flex flex-col gap-3" style={{ transform: 'none' }}>
+      <div className="absolute top-4 right-4  2xl:top-8 2xl:right-8 z-10 flex flex-col gap-3">
 
         {/* ---------------- Map Layer Selector ---------------- */}
         <div className="relative">
@@ -213,8 +213,6 @@ const TopRightControls = ({
         <div
           className="fixed inset-0 z-5"
           onClick={closeAllDropdowns} // Clicking anywhere outside closes all dropdowns
-                    style={{ transform: 'none' }}
-
         />
       )}
     </>

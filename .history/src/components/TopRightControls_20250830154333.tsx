@@ -1,18 +1,16 @@
-import { Layers, CalendarDays, Activity, Info } from "lucide-react"; // Importing icons
-import { mapLayers, timeRangeOptions, magnitudeOptions, markerInfo } from "../data/data"; // Importing buttons data
+import { Layers, CalendarDays, Activity, Info } from "lucide-react";
+import { mapLayers, timeRangeOptions, magnitudeOptions, markerInfo } from "../data/data";
 import { useState } from "react";
 
-// Props definition for the TopRightControls component
 type TopRightControlsProps = {
-  activeLayer: MapLayer; // Currently selected map layer
-  setActiveLayer: (layer: MapLayer) => void; // Function to update map layer
-  activeTimeRange: string; // Currently selected time range
-  setActiveTimeRange: (range: string) => void; // Function to update time range
-  activeMagnitude: string; // Currently selected magnitude filter
-  setActiveMagnitude: (mag: string) => void; // Function to update magnitude filter
+  activeLayer: MapLayer;
+  setActiveLayer: (layer: MapLayer) => void;
+  activeTimeRange: string;
+  setActiveTimeRange: (range: string) => void;
+  activeMagnitude: string;
+  setActiveMagnitude: (mag: string) => void;
 }
 
-// Component for the top-right controls of the map
 const TopRightControls = ({
   activeLayer, 
   setActiveLayer, 
@@ -22,13 +20,11 @@ const TopRightControls = ({
   setActiveMagnitude
 }: TopRightControlsProps) => {
 
-  // State to manage dropdown visibility for each control
   const [isLayerSelectorOpen, setIsLayerSelectorOpen] = useState(false);
   const [isTimeRangeOpen, setIsTimeRangeOpen] = useState(false);
   const [isMagnitudeOpen, setIsMagnitudeOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
 
-  // Helper function to close all dropdowns at once
   const closeAllDropdowns = () => {
     setIsLayerSelectorOpen(false);
     setIsTimeRangeOpen(false);
@@ -36,14 +32,28 @@ const TopRightControls = ({
     setIsInfoOpen(false);
   };
 
+  // Prevent map interactions when interacting with controls
+  const handleControlInteraction = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
-      {/* Container for the top-right buttons */}
-      <div className="absolute top-4 right-4 2xl:top-8 2xl:right-8 z-20 flex flex-col gap-3" style={{ transform: 'none' }}>
+      {/* Container for the top-right buttons - prevent map events */}
+      <div 
+        className="absolute top-4 right-4 2xl:top-8 2xl:right-8 z-10 flex flex-col gap-3 leaflet-control-container"
+        onMouseDown={handleControlInteraction}
+        onMouseUp={handleControlInteraction}
+        onMouseMove={handleControlInteraction}
+        onWheel={handleControlInteraction}
+        onTouchStart={handleControlInteraction}
+        onTouchEnd={handleControlInteraction}
+        onTouchMove={handleControlInteraction}
+        onDoubleClick={handleControlInteraction}
+      >
 
         {/* ---------------- Map Layer Selector ---------------- */}
         <div className="relative">
-          {/* Button to toggle layer selector dropdown */}
           <button
             onClick={() => {
               setIsLayerSelectorOpen(!isLayerSelectorOpen);
@@ -54,12 +64,22 @@ const TopRightControls = ({
             className="bg-slate-50 hover:bg-slate-100 border border-gray-300 rounded-lg p-3 shadow-lg transition-all duration-200 hover:shadow-xl"
             title="Change map layer"
           >
-            <Layers className={`w-5 h-5  ${isLayerSelectorOpen?'text-indigo-600':' text-gray-700'}`} />
+            <Layers className={`w-5 h-5 ${isLayerSelectorOpen ? 'text-indigo-600' : ' text-gray-700'}`} />
           </button>
 
-          {/* Dropdown menu for map layers */}
+          {/* Dropdown positioned absolutely but with event prevention */}
           {isLayerSelectorOpen && (
-            <div className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42">
+            <div 
+              className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42 z-50"
+              onMouseDown={handleControlInteraction}
+              onMouseUp={handleControlInteraction}
+              onMouseMove={handleControlInteraction}
+              onWheel={handleControlInteraction}
+              onTouchStart={handleControlInteraction}
+              onTouchEnd={handleControlInteraction}
+              onTouchMove={handleControlInteraction}
+              onDoubleClick={handleControlInteraction}
+            >
               <div className="px-4 py-2 border-b border-gray-200">
                 <span className="text-sm font-medium text-gray-700">Map Layers</span>
               </div>
@@ -85,7 +105,6 @@ const TopRightControls = ({
 
         {/* ---------------- Time Range Selector ---------------- */}
         <div className="relative">
-          {/* Button to toggle time range dropdown */}
           <button
             onClick={() => {
               setIsTimeRangeOpen(!isTimeRangeOpen);
@@ -96,13 +115,21 @@ const TopRightControls = ({
             className="bg-slate-50 hover:bg-slate-100 border border-gray-300 rounded-lg p-3 shadow-lg transition-all duration-200 hover:shadow-xl"
             title="Select time range"
           >
-            <CalendarDays className={`w-5 h-5  ${isTimeRangeOpen?'text-indigo-600':' text-gray-700'}`} />
-
+            <CalendarDays className={`w-5 h-5 ${isTimeRangeOpen ? 'text-indigo-600' : ' text-gray-700'}`} />
           </button>
 
-          {/* Dropdown menu for time ranges */}
           {isTimeRangeOpen && (
-            <div className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42">
+            <div 
+              className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42 z-50"
+              onMouseDown={handleControlInteraction}
+              onMouseUp={handleControlInteraction}
+              onMouseMove={handleControlInteraction}
+              onWheel={handleControlInteraction}
+              onTouchStart={handleControlInteraction}
+              onTouchEnd={handleControlInteraction}
+              onTouchMove={handleControlInteraction}
+              onDoubleClick={handleControlInteraction}
+            >
               <div className="px-4 py-2 border-b border-gray-200">
                 <span className="text-sm font-medium text-gray-700">Time Range</span>
               </div>
@@ -128,7 +155,6 @@ const TopRightControls = ({
 
         {/* ---------------- Magnitude Selector ---------------- */}
         <div className="relative">
-          {/* Button to toggle magnitude dropdown */}
           <button
             onClick={() => {
               setIsMagnitudeOpen(!isMagnitudeOpen);
@@ -139,12 +165,21 @@ const TopRightControls = ({
             className="bg-slate-50 hover:bg-slate-100 border border-gray-300 rounded-lg p-3 shadow-lg transition-all duration-200 hover:shadow-xl"
             title="Select magnitude"
           >
-            <Activity className={`w-5 h-5  ${isMagnitudeOpen?'text-indigo-600':' text-gray-700'}`} />
+            <Activity className={`w-5 h-5 ${isMagnitudeOpen ? 'text-indigo-600' : ' text-gray-700'}`} />
           </button>
 
-          {/* Dropdown menu for magnitude options */}
           {isMagnitudeOpen && (
-            <div className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42">
+            <div 
+              className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42 z-50"
+              onMouseDown={handleControlInteraction}
+              onMouseUp={handleControlInteraction}
+              onMouseMove={handleControlInteraction}
+              onWheel={handleControlInteraction}
+              onTouchStart={handleControlInteraction}
+              onTouchEnd={handleControlInteraction}
+              onTouchMove={handleControlInteraction}
+              onDoubleClick={handleControlInteraction}
+            >
               <div className="px-4 py-2 border-b border-gray-200">
                 <span className="text-sm font-medium text-gray-700">Magnitude</span>
               </div>
@@ -170,7 +205,6 @@ const TopRightControls = ({
 
         {/* ---------------- Marker Info Display ---------------- */}
         <div className="relative">
-          {/* Button to toggle marker info dropdown */}
           <button
             onClick={() => {
               setIsInfoOpen(!isInfoOpen);
@@ -181,12 +215,21 @@ const TopRightControls = ({
             className="bg-slate-50 hover:bg-slate-100 border border-gray-300 rounded-lg p-3 shadow-lg transition-all duration-200 hover:shadow-xl"
             title="Marker information"
           >
-            <Info className={`w-5 h-5  ${isInfoOpen?'text-indigo-600':' text-gray-700'}`} />
+            <Info className={`w-5 h-5 ${isInfoOpen ? 'text-indigo-600' : ' text-gray-700'}`} />
           </button>
 
-          {/* Dropdown menu showing marker colors and descriptions */}
           {isInfoOpen && (
-            <div className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42">
+            <div 
+              className="absolute top-0 right-12 mt-0 bg-slate-50 border border-gray-200 rounded-lg shadow-lg overflow-hidden min-w-42 z-50"
+              onMouseDown={handleControlInteraction}
+              onMouseUp={handleControlInteraction}
+              onMouseMove={handleControlInteraction}
+              onWheel={handleControlInteraction}
+              onTouchStart={handleControlInteraction}
+              onTouchEnd={handleControlInteraction}
+              onTouchMove={handleControlInteraction}
+              onDoubleClick={handleControlInteraction}
+            >
               <div className="px-4 py-2 border-b border-gray-200">
                 <span className="text-sm font-medium text-gray-700">Marker Info</span>
               </div>
@@ -195,7 +238,6 @@ const TopRightControls = ({
                   key={layer.color}
                   className="w-full flex items-center gap-3 px-4 py-2 text-left text-gray-700"
                 >
-                  {/* Display the color associated with each marker */}
                   <div
                     className="rounded-full w-3 h-3"
                     style={{ backgroundColor: layer.color }}
@@ -208,13 +250,11 @@ const TopRightControls = ({
         </div>
       </div>
 
-      {/* ---------------- Overlay to close dropdowns when clicking outside ---------------- */}
+      {/* Overlay to close dropdowns when clicking outside */}
       {(isLayerSelectorOpen || isTimeRangeOpen || isMagnitudeOpen || isInfoOpen) && (
         <div
-          className="fixed inset-0 z-5"
-          onClick={closeAllDropdowns} // Clicking anywhere outside closes all dropdowns
-                    style={{ transform: 'none' }}
-
+          className="fixed inset-0 z-40"
+          onClick={closeAllDropdowns}
         />
       )}
     </>

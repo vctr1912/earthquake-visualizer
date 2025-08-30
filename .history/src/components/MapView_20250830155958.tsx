@@ -1,13 +1,3 @@
-import { useMemo, useState, useEffect } from "react";
-import { MapContainer, TileLayer, ZoomControl } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import EarthquakeMarker from "./EarthquakeMarker";
-
-type MapViewProps = {
-  activeLayer: MapLayer;
-  earthquakes: Earthquake[];
-};
-
 // In MapView.js
 const MapView = ({ activeLayer, earthquakes }: MapViewProps) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -50,5 +40,3 @@ const MapView = ({ activeLayer, earthquakes }: MapViewProps) => {
     </div>
   );
 };
-
-export default MapView;
