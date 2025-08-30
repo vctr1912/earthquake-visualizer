@@ -21,7 +21,7 @@ const EarthquakeMarker = ({ earthquake }: EarthquakeMarkerProps) => {
       center={earthquake.position}
       radius={6}
       pathOptions={{
-        color: isPopupOpen ? "#3d3d3d" : baseColor, 
+        color: isPopupOpen ? "#262626" : baseColor, // Change border color when popup is open
         fillColor: baseColor,
         fillOpacity: 0.7,
         weight: 2,

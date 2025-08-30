@@ -1,4 +1,4 @@
-import { CircleMarker, Popup } from "react-leaflet";
+import { CircleMarker, Popup, useMapEvent } from "react-leaflet";
 import { useState } from "react";
 
 type EarthquakeMarkerProps = {
@@ -21,7 +21,7 @@ const EarthquakeMarker = ({ earthquake }: EarthquakeMarkerProps) => {
       center={earthquake.position}
       radius={6}
       pathOptions={{
-        color: isPopupOpen ? "#3d3d3d" : baseColor, 
+        color: isPopupOpen ? "#0000FF" : baseColor, // Change border color when popup is open
         fillColor: baseColor,
         fillOpacity: 0.7,
         weight: 2,
