@@ -139,7 +139,7 @@ const TopRightControls = ({
             className="bg-slate-50 hover:bg-slate-100 border border-gray-300 rounded-lg p-3 shadow-lg transition-all duration-200 hover:shadow-xl"
             title="Select magnitude"
           >
-            <Activity className={`w-5 h-5  ${isMagnitudeOpen?'text-indigo-600':' text-gray-700'}`} />
+            <Activity className="w-5 h-5 text-gray-700" />
           </button>
 
           {/* Dropdown menu for magnitude options */}
@@ -181,7 +181,7 @@ const TopRightControls = ({
             className="bg-slate-50 hover:bg-slate-100 border border-gray-300 rounded-lg p-3 shadow-lg transition-all duration-200 hover:shadow-xl"
             title="Marker information"
           >
-            <Info className={`w-5 h-5  ${isInfoOpen?'text-indigo-600':' text-gray-700'}`} />
+            <Info className="w-5 h-5 text-gray-700" />
           </button>
 
           {/* Dropdown menu showing marker colors and descriptions */}

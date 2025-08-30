@@ -1,4 +1,4 @@
-import { Layers, CalendarDays, Activity, Info } from "lucide-react"; // Importing icons
+import { Layers, CalendarDays, Activity, Info, Axe } from "lucide-react"; // Importing icons
 import { mapLayers, timeRangeOptions, magnitudeOptions, markerInfo } from "../data/data"; // Importing buttons data
 import { useState } from "react";
 
