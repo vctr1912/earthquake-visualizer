@@ -39,7 +39,7 @@ const App = () => {
         // Ensure spinner shows for at least 3 seconds for large datasets
         if (data.length > 5000) {
           const elapsedTime = Date.now() - startTime;
-          const minLoadingTime = 2000; // Minimum loading display in ms
+          const minLoadingTime = 3000; // Minimum loading display in ms
           const remainingTime = Math.max(0, minLoadingTime - elapsedTime);
 
           setTimeout(() => {
