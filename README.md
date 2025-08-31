@@ -58,7 +58,7 @@ https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/earthquake-visualizer.git
+git clone https://github.com/vctr1912/earthquake-visualizer.git
 cd earthquake-visualizer
 ```
 
